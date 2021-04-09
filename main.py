@@ -62,8 +62,6 @@ koopa =  pygame.image.load('images/koopaEast.png')
 
 M = Magikoopa()
 
-B = Bullet_Bill()
-
 #list of bullets
 bullet_list = []
 for i in range(2):
@@ -80,6 +78,8 @@ pygame.time.set_timer(pygame.USEREVENT + 1, 500)
 global dead
 dead = False
 keys = True
+
+
 
 while not done:
   #list for Koopa lives
@@ -190,23 +190,7 @@ while not done:
 
 
 
-    if M.getX() == 400:
-      messagebox.showinfo('Bullet Bill', "You chrash landed!")
-        
-    if numlives == 0 :
-      answer = messagebox.askyesno("", "would you like play agian")
-
-      if answer == 'YES':
-        
-        numlives = 3
-        startgame = True
- 
-      if answer == 'NO':
-        quit()
-        startgame = False
-        done = True  
-        quit()
-      
+    
         
   
 
