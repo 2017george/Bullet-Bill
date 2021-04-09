@@ -63,7 +63,7 @@ M = Magikoopa()
 
 #list of bullets
 bullet_list = []
-for i in range(2):
+for i in range(20):
   bullet_list.append(Bullet_Bill())
 
 clock = pygame.time.Clock()
@@ -192,10 +192,10 @@ while not done:
     if M.getX() == 400:
       messagebox.showinfo('Bullet Bill', "You chrash landed!")
 
+
     if numlives == 0 :
         if messagebox.askyesno("", "would you like play agian"):
             numlives = 3
-            print(numlives)
             startgame = True
         else:
             quit()
@@ -206,7 +206,7 @@ while not done:
 
 
 
-
+ 
 
 
     #this outputs the gameover once lives are Zero

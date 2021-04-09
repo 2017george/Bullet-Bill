@@ -12,7 +12,7 @@ class Bullet_Bill:
     self.__width = self.__imgBullet.get_width()
     self.__height = self.__imgBullet.get_height()
 
-    self.__xpos = random.randint(580, 1400)
+    self.__xpos = random.randint(580, 2400)
     self.__ypos = random.randint(100, 397)
 
   #this is used for the hit of the Bullet Bill. 
