@@ -3,17 +3,16 @@ from tkinter import Tk, messagebox
 from BulletBill import Bullet_Bill
 from Magikoopa import Magikoopa
 from pygame.locals import *
-from replit import audio
 
-#this both add's and take the messagebox window away   
+#this both add's and take the messagebox window away
 root = Tk()
 root.withdraw()
- 
-#this varbile is for the score and makes the start game false 
+
+#this varbile is for the score and makes the start game false
 startgame = False
 score = 0
 
-#these will load in the sound effects and the sound 
+#these will load in the sound effects and the sound
 # pygame.mixer.init()
 # death_sound = pygame.mixer.Sound("death.mp3")
 # point_sound = pygame.mixer.Sound("Score.mp3")
@@ -21,7 +20,7 @@ score = 0
 
 os.environ['SDL_VIDEO_CENTERED'] = '1'
 
-#this will intialize pygame change the name of the window and take the mouse away when you are on the game application 
+#this will intialize pygame change the name of the window and take the mouse away when you are on the game application
 pygame.init()
 pygame.display.set_caption('Bullet Bill')
 pygame.mouse.set_visible(False)
@@ -29,19 +28,19 @@ pygame.key.set_repeat(50)
 
 
 
-#this will give you the background for the game and the title of it 
+#this will give you the background for the game and the title of it
 imgbackground = pygame.image.load('images/game-background.png')
 
 imgtitle = pygame.image.load('images/title.png')
 
-#this is our surface varible 
+#this is our surface varible
 surface = pygame.display.set_mode((imgbackground.get_width(), imgbackground.get_height()))
 
-#these give us our game font and the score font 
+#these give us our game font and the score font
 score_font = pygame.font.Font('magicdreams.ttf', 28)
 game_font = pygame.font.Font('magicdreams.ttf', 48)
 
-#these varibles is for the click the space bar and it out puts the score and the click the spcae bar also the gameover 
+#these varibles is for the click the space bar and it out puts the score and the click the spcae bar also the gameover
 start_output = game_font.render('CLICK SPACEBAR TO START', True, pygame.Color('#426b94'))
 
 score_output = score_font.render("{:<8s}{:<5d}".format('SCORE:', score), True, pygame.Color('#426b94'))
@@ -57,7 +56,7 @@ TOP_BORDER, BOTTOM_BORDER = 50, pygame.display.get_surface().get_height() - 30
 imglives = [None] * 4
 numlives = 3
 
-#this is just the Koopa imagie 
+#this is just the Koopa imagie
 koopa =  pygame.image.load('images/koopaEast.png')
 
 M = Magikoopa()
@@ -99,7 +98,7 @@ while not done:
         #pygame.mixer.music.play(-1)
 
     if startgame == True:
-      #this code is the timer that makes the Magikoopa have gravity. 
+      #this code is the timer that makes the Magikoopa have gravity.
       if event.type == pygame.USEREVENT:
         if dead == True:
           M.move_down(25)
@@ -107,7 +106,7 @@ while not done:
           M.move_down(10)
 
       #this code is the timer that makes the Bullet Bill move from right to left of the screen.
-      if event.type == pygame.USEREVENT + 1: 
+      if event.type == pygame.USEREVENT + 1:
         for i in bullet_list:
           i.move(20)
 
@@ -133,20 +132,20 @@ while not done:
   surface.blit(imgbackground, (0, 0))
   #outputs the title of the game on the top middle of the window.
   surface.blit(imgtitle, (pygame.display.get_surface().get_width() // 2 - imgtitle.get_width() // 2, 10))
-  
+
   #outputs the number of lives on the top right corner of the window.
   surface.blit(imglives[numlives], (pygame.display.get_surface().get_width() - imglives[numlives].get_width() - 10, 15))
-  
+
   score_output = score_font.render("{:<8s}{:<5d}".format('SCORE:', score), True, pygame.Color('#426b94'))
-  
+
   #outputs the score on the top left of the window.
   surface.blit(score_output, (15, 15))
-  
+
   #this part of the program will print out the text that tells the user to click the space bar to start the game.
   if startgame == False:
     surface.blit(start_output, (pygame.display.get_surface().get_width() // 2 - start_output.get_width() // 2,pygame.display.get_surface().get_height() // 2 - 115))
 
-  #this is going to get rid of the text when space bar is clicked 
+  #this is going to get rid of the text when space bar is clicked
   if startgame == True:
     M.border()
 
@@ -158,9 +157,9 @@ while not done:
     for B in bullet_list:
       if B.getX() < 0:
         B.position()
-        score += 100 
+        score += 100
         # point_sound = pygame.mixer.Sound("Score.mp3")
-      
+
       #outputting the Bullet Bills
       surface.blit(B.get_img(), (B.getX(), B.getY()))
 
@@ -170,15 +169,15 @@ while not done:
         dead = True
         keys = False
 
-      #this makes him die when he hits the ground 
+      #this makes him die when he hits the ground
       if M.getY() == 400:
         dead = True
-         
+
       #when dead, the dead koopa image is outputed
       if dead == True:
         surface.blit(M.dead(dead),(M.getX(), M.getY()))
 
-        if M.getY() == 400: 
+        if M.getY() == 400:
           M.reset()
           numlives -= 1
           dead = False
@@ -192,23 +191,20 @@ while not done:
 
     if M.getX() == 400:
       messagebox.showinfo('Bullet Bill', "You chrash landed!")
-        
-    if numlives == 0 :
-      answer = messagebox.askyesno("", "would you like play agian")
 
-      if answer == 'YES':
-        
-        numlives = 3
-        startgame = True
- 
-      if answer == 'NO':
-        quit()
-        startgame = False
-        done = True  
-        quit()
-      
-        
-  
+    if numlives == 0 :
+        if messagebox.askyesno("", "would you like play agian"):
+            numlives = 3
+            print(numlives)
+            startgame = True
+        else:
+            quit()
+            startgame = False
+            done = True
+            quit()
+
+
+
 
 
 
@@ -218,11 +214,11 @@ while not done:
       surface.blit(gameover_output, (pygame.display.get_surface().get_width() // 1 - start_output.get_width() // 1 ,pygame.display.get_surface().get_height() // 2 - 115))
       startgame = False
 
-      
 
-  
+
+
   clock.tick(60)
 
-  #this updates the window 
+  #this updates the window
   pygame.display.update()
   surface.blit(imgbackground, (0, 0))
