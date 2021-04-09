@@ -61,8 +61,6 @@ koopa =  pygame.image.load('images/koopaEast.png')
 
 M = Magikoopa()
 
-B = Bullet_Bill()
-
 #list of bullets
 bullet_list = []
 for i in range(2):
@@ -79,6 +77,8 @@ pygame.time.set_timer(pygame.USEREVENT + 1, 500)
 global dead
 dead = False
 keys = True
+
+
 
 while not done:
   #list for Koopa lives
