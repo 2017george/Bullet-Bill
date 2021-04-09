@@ -38,7 +38,7 @@ class Bullet_Bill:
 
   def position(self):
     self.__ypos = random.randint(100, 450)
-    self.__xpos = random.randint(580, 620)
+    self.__xpos = random.randint(580, 800)
 
   def setX(self, x): 
     self.__xpos = x
