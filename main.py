@@ -166,7 +166,6 @@ while not done:
             for x in range(10):
                 if B.get_bounds().colliderect(i.get_bounds()):
                     B.position()
-                    print("working")
                 else:
                     break
         score += 100
@@ -177,10 +176,21 @@ while not done:
 
       #collision for when the koopa hits the Bullet Bills
       if M.get_bounds().colliderect(B.get_bounds()):
+        print(B)
+        B.setX(-1000)
+        del B
+        score -= 100
         pygame.time.set_timer(USEREVENT + 1, 0)
         dead = True
         keys = False
-
+        B= Bullet_Bill()
+        for i in bullet_list:
+            for x in range(10):
+                if B.get_bounds().colliderect(i.get_bounds()):
+                    B.position()
+                else:
+                    break
+        bullet_list.append(B)
       #this makes him die when he hits the ground
       if M.getY() == 400:
         dead = True
@@ -207,6 +217,18 @@ while not done:
 
     if numlives == 0 :
         if messagebox.askyesno("", "would you like play agian"):
+            #delete the list of bullets
+            for i in bullet_list:
+                del i
+            #list of bullets
+            bullet_list = []
+            for i in range(20):
+                b =  Bullet_Bill()
+                for i in bullet_list:
+                    while b.get_bounds().colliderect(i.get_bounds()):
+                        b.position()
+
+                bullet_list.append(b)
             numlives = 3
             startgame = True
         else:
