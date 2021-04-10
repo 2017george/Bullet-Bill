@@ -73,11 +73,7 @@ for i in range(20):
 
 clock = pygame.time.Clock()
 
-#timer for Koopa
-pygame.time.set_timer(pygame.USEREVENT, 500)
 
-#timer for Bullet Bill
-pygame.time.set_timer(pygame.USEREVENT + 1, 500)
 
 global dead
 dead = False
@@ -103,6 +99,11 @@ while not done:
         #pygame.mixer.music.play(-1)
 
     if startgame == True:
+      #timer for Koopa
+      pygame.time.set_timer(pygame.USEREVENT, 500)
+
+      #timer for Bullet Bill
+      pygame.time.set_timer(pygame.USEREVENT + 1, 500)
       #this code is the timer that makes the Magikoopa have gravity.
       if event.type == pygame.USEREVENT:
         if dead == True:
@@ -167,7 +168,6 @@ while not done:
                 if B.get_bounds().colliderect(i.get_bounds()):
                     B.position()
                 else:
-                  print("I broke him ")
                   break
         score += 100
         # point_sound = pygame.mixer.Sound("Score.mp3")
@@ -177,7 +177,6 @@ while not done:
 
       #collision for when the koopa hits the Bullet Bills
       if M.get_bounds().colliderect(B.get_bounds()):
-        print(B)
         B.setX(-1000)
         del B
         score -= 100
@@ -199,7 +198,7 @@ while not done:
       #when dead, the dead koopa image is outputed
       if dead == True:
         surface.blit(M.dead(dead),(M.getX(), M.getY()))
-        messagebox.showinfo('Bullet Bill', "You chrash landed!")
+
 
         if M.getY() == 400:
           M.reset()
@@ -208,7 +207,7 @@ while not done:
           keys = True
           B.position()
           pygame.time.set_timer(pygame.USEREVENT + 1, 500)
-
+          messagebox.showinfo('Bullet Bill', "You chrash landed!")
 
 
 
