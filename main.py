@@ -199,6 +199,7 @@ while not done:
       #when dead, the dead koopa image is outputed
       if dead == True:
         surface.blit(M.dead(dead),(M.getX(), M.getY()))
+        messagebox.showinfo('Bullet Bill', "You chrash landed!")
 
         if M.getY() == 400:
           M.reset()
@@ -212,8 +213,7 @@ while not done:
 
 
 
-    if M.getY() == 400:
-      messagebox.showinfo('Bullet Bill', "You chrash landed!")
+
 
 
     if numlives == 0 :
