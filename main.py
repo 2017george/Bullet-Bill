@@ -163,12 +163,12 @@ while not done:
       if B.getX() < 0:
         B.position()
         for i in bullet_list:
-            for x in range(10):
+            for x in range(15):
                 if B.get_bounds().colliderect(i.get_bounds()):
                     B.position()
-                    print("working")
                 else:
-                    break
+                  print("I broke him ")
+                  break
         score += 100
         # point_sound = pygame.mixer.Sound("Score.mp3")
 
@@ -201,7 +201,7 @@ while not done:
 
 
 
-    if M.getX() == 400:
+    if M.getY() == 400:
       messagebox.showinfo('Bullet Bill', "You chrash landed!")
 
 
