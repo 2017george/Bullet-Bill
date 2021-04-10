@@ -207,7 +207,7 @@ while not done:
           keys = True
           B.position()
           pygame.time.set_timer(pygame.USEREVENT + 1, 500)
-          messagebox.showinfo('Bullet Bill', "You chrash landed!")
+          messagebox.showinfo('Bullet Bill', "You crash landed!")
 
 
 
@@ -230,6 +230,7 @@ while not done:
 
                 bullet_list.append(b)
             numlives = 3
+            score = 0 
             startgame = True
         else:
             quit()
