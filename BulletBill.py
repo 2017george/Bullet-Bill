@@ -12,7 +12,7 @@ class Bullet_Bill:
     self.__width = self.__imgBullet.get_width()
     self.__height = self.__imgBullet.get_height()
 
-    self.__xpos = random.randint(580, 3400)
+    self.__xpos = random.randint(580, 3600)
     self.__ypos = random.randint(100, 397)
 
   #this is used for the hit of the Bullet Bill.
@@ -46,7 +46,7 @@ class Bullet_Bill:
   #this randomize the position of the bullet bill
   def position(self):
     self.__ypos = random.randint(100, 397)
-    self.__xpos = random.randint(580, 3400)
+    self.__xpos = random.randint(580, 3600)
 
   #this sets the x coordinate of the bullet bill
   def setX(self, x):
