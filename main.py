@@ -64,7 +64,12 @@ M = Magikoopa()
 #list of bullets
 bullet_list = []
 for i in range(20):
-  bullet_list.append(Bullet_Bill())
+    b =  Bullet_Bill()
+    for i in bullet_list:
+        while b.get_bounds().colliderect(i.get_bounds()):
+            b.position()
+
+    bullet_list.append(b)
 
 clock = pygame.time.Clock()
 
@@ -157,6 +162,13 @@ while not done:
     for B in bullet_list:
       if B.getX() < 0:
         B.position()
+        for i in bullet_list:
+            for x in range(10):
+                if B.get_bounds().colliderect(i.get_bounds()):
+                    B.position()
+                    print("working")
+                else:
+                    break
         score += 100
         # point_sound = pygame.mixer.Sound("Score.mp3")
 
@@ -206,7 +218,7 @@ while not done:
 
 
 
- 
+
 
 
     #this outputs the gameover once lives are Zero
